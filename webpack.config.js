@@ -5,6 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const htmlWebpackPlugin= require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
+    optimization: {
+        minimizer: [new UglifyJsPlugin()],
+      },
+    
     entry : {
         directore : './src/js/index.js',
         jquery : './node_modules/jquery/dist/jquery.min.js'
