@@ -14,7 +14,8 @@ module.exports = {
         jquery : './node_modules/jquery/dist/jquery.min.js'
     },
     output : {
-        filename : '[name].[contenthash].js', 
+        // filename : '[name].[contenthash].js', 
+        filename : '[name].js', 
         path : path.resolve(__dirname , 'dist')
     },
     module: {
@@ -70,9 +71,12 @@ module.exports = {
         new CleanWebpackPlugin(),
         new webpack.ProgressPlugin(),
         // new htmlWebpackPlugin({
-        //     filename : "newtemp2.html",
-        //     inject: false,
-        //     templateContent : ({htmlWebpackPlugin}) => `
+        //     filename : "index2.html",
+        //     hash: true,
+        //     chunks: ["jquery", "directore"],
+        //     chunksSortMode : "manual",
+        //     templateContent: `
+
         //     <!DOCTYPE html>
         //     <html lang="fa">
         //     <head>
@@ -80,35 +84,28 @@ module.exports = {
         //         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         //         <!-- JQ -->
-        //         <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        //         <title> ECMA script </title>
-        //     <script defer src="bundle.js"></script></head>
-            
-            
+        //         <title> htmlWebpackPlugin test </title>
+        //     </head>
+
+
         //     <body class="container" id="elimg">
-        //     به نام خدا 
+
+        //         <p> به نام خدا </p>
+
+
                 
-            
-                
-        //         <button class="btn btn-danger mt-5 mx-auto"> test <i class="bi bi-telegram"></i> </button>
-            
-                
-        //         <!-- bundle -->
-        //         <script src="dist/bundle.js"></script>
+        //         <button class="btn btn-danger"> test <i class="bi bi-telegram"></i> </button>
+
         //     </body>
         //     </html>
+
+
         //     `
         // }),
-        
-        new htmlWebpackPlugin({
-            filename : "index.html",
-            title: "htmlWebpackPlugin test",
-            hash: true,
-            chunks: ["jquery", "directore"],
-            chunksSortMode : "manual",
-        }),
+
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            // filename: '[name].[contenthash].css'
+            filename: '[name].css'
         }),
 
     ],
