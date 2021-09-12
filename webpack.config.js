@@ -20,6 +20,16 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: "babel-loader",
+                  options: {
+                    presets: ['@babel/preset-env']
+                  }
+                }
+            },        
+            {
                 test : /\.css$/,
                 use : [MiniCssExtractPlugin.loader,'css-loader']
             },
@@ -45,17 +55,14 @@ module.exports = {
                     }
                 }
             },
+
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: {
-                   loader: 'file-loader',
-                    options: {
-                        outputPath: './fonts',
-                        name: '[name].[ext]',
-                        limit: false,
-                    }
-                }
-            },
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				generator: {
+					filename: './fonts/[hash][ext]',
+				},
+			},
+
         ],
 
     },
@@ -94,14 +101,11 @@ module.exports = {
         // }),
         
         new htmlWebpackPlugin({
-            outputPath: '../assets/fonts',
-            filename : "indexx.html",
+            filename : "index.html",
             title: "htmlWebpackPlugin test",
             hash: true,
             chunks: ["jquery", "directore"],
             chunksSortMode : "manual",
-            template : __dirname + '/app/index.html',
-   
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
