@@ -1,7 +1,7 @@
 
 class names{
     constructor(){
-        this.name = "omid"; 
+        this.name = "hi"; 
 
     }
 }
